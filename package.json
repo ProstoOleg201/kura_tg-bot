@@ -2,9 +2,9 @@
   "name": "kura_bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "node_modules/.bin/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node node_modules/.bin/index.js"
   },
   "engines": {
     "node": "12.18.3"
