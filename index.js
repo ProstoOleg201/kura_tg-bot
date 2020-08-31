@@ -25,6 +25,10 @@ bot.onText(/\/start_test/, function (msg, match) {
 bot.on('callback_query', (query, msg) => {
    const chatId = query.message.chat.id;
 
+   const msgChatId = msg.chat.id;
+   const msgId = msg.message_id;
+   bot.deleteMessage(msgChatId, msgId);
+
    if(query.data === 'data 1') bot.sendMessage(chatId, 'Вибор поиска по слову');
    if(query.data === 'data 2') bot.sendMessage(chatId, 'Вибор поиска по категориям');
    if(query.data === 'data 3') bot.sendMessage(chatId, 'Вибор поиска по району');
