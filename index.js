@@ -29,12 +29,12 @@ bot.on('callback_query', (query) => {
     switch (query.data) {
         case 'data 1':
             bot.sendMessage(chat.id,'Вибор поиска по слову')
-            break
+            break;
         case 'data 2':
             bot.sendMessage(chatId, 'Вибор поиска по категориям')
-            break
+            break;
         case 'data 3':
             bot.sendMessage(chatId, 'Вибор поиска по району')
-            break
+            break;
     }
 });
