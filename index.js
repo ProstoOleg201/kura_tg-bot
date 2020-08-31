@@ -21,3 +21,31 @@ bot.onText(/\/start_test/, function (msg, match) {
     let textBot = 'Привет курьер, выбери один из пунктов для помощи:'
     bot.sendMessage(msg.chat.id, textBot, options);
 });
+
+bot.on('callback_query', (query) => {
+   const chatId = query.message.chat.id;
+
+   if(query.data === 'data 1'){
+       bot.sendMessage(chatId, 'Вибор поиска по слову', {
+           reply_markup: {
+               inline_keyboard: keyboard
+           }
+       });
+   }
+
+    if(query.data === 'data 2'){
+        bot.sendMessage(chatId, 'Вибор поиска по категориям', {
+            reply_markup: {
+                inline_keyboard: keyboard
+            }
+        });
+    }
+
+    if(query.data === 'data 3'){
+        bot.sendMessage(chatId, 'Вибор поиска по району', {
+            reply_markup: {
+                inline_keyboard: keyboard
+            }
+        });
+    }
+});
