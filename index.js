@@ -10,13 +10,14 @@ let bot = new TelegramBot(token, { polling: true });
 var options = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
-            [{ text: 'Кнопка 1', callback_data: 'data 1' }],
-            [{ text: 'Кнопка 2', callback_data: 'data 2' }],
-            [{ text: 'Кнопка 3', callback_data: 'data 3' }]
+            [{ text: 'Поиск по слову', callback_data: 'data 1' }],
+            [{ text: 'Поиск по категориям', callback_data: 'data 2' }],
+            [{ text: 'Поиск по району', callback_data: 'data 3' }]
         ]
     })
 };
 
 bot.onText(/\/start_test/, function (msg, match) {
-    bot.sendMessage(msg.chat.id, 'Выберите любую кнопку:', options);
+    let textBot = 'Привет курьер, выбери один из пунктов для помощи:'
+    bot.sendMessage(msg.chat.id, textBot, options);
 });
