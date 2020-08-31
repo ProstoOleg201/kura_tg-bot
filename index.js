@@ -31,10 +31,10 @@ bot.on('callback_query', (query) => {
             bot.sendMessage(chat.id,'Вибор поиска по слову')
             break;
         case 'data 2':
-            bot.sendMessage(chatId, 'Вибор поиска по категориям')
+            bot.sendMessage(chat.id, 'Вибор поиска по категориям')
             break;
         case 'data 3':
-            bot.sendMessage(chatId, 'Вибор поиска по району')
+            bot.sendMessage(chat.id, 'Вибор поиска по району')
             break;
     }
 });
