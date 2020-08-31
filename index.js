@@ -12,8 +12,7 @@ var options = {
         inline_keyboard: [
             [{ text: 'Поиск по слову', callback_data: 'data 1' }],
             [{ text: 'Поиск по категориям', callback_data: 'data 2' }],
-            [{ text: 'Поиск по району', callback_data: 'data 3' }],
-            [{ text: 'Удаление', callback_data: 'data 4' }]
+            [{ text: 'Поиск по району', callback_data: 'data 3' }]
         ]
     })
 };
@@ -29,16 +28,16 @@ bot.on('callback_query', (query) => {
 
     switch (query.data) {
         case 'data 1':
+            bot.deleteMessage(chat.id, message_id)
             bot.sendMessage(chat.id,'Вибор поиска по слову')
             break;
         case 'data 2':
+            bot.deleteMessage(chat.id, message_id)
             bot.sendMessage(chat.id, 'Вибор поиска по категориям')
             break;
         case 'data 3':
-            bot.sendMessage(chat.id, 'Вибор поиска по району')
-            break;
-        case 'data 4':
             bot.deleteMessage(chat.id, message_id)
+            bot.sendMessage(chat.id, 'Вибор поиска по району')
             break;
     }
 });
