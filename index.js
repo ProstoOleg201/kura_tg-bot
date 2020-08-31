@@ -28,7 +28,7 @@ bot.on('callback_query', (query) => {
 
    if(query.data === 'data 1') {
        bot.deleteMessage(chatId,msgId);//удаляем сообщение
-       bot.sendMessage(chatId, 'Вибор поиска по слову');
+       //bot.sendMessage(chatId, 'Вибор поиска по слову');
    }
    if(query.data === 'data 2') bot.sendMessage(chatId, 'Вибор поиска по категориям');
    if(query.data === 'data 3') bot.sendMessage(chatId, 'Вибор поиска по району');
