@@ -3,19 +3,6 @@ const TOKEN = '1185029109:AAGxJlPbIlj2VxIzNb_KFgT6uhBx1IdNvec'
 
 const bot = new TelegramBot(TOKEN, {polling: true})
 
-/* bot.on('message',msg => {
-    bot.sendMessage(msg.chat.id, `Hello: "Hi, ${msg.from.first_name}"`)
-}
- */
-
-bot.on('text', function (msg)
-{
-    let messageChatId = msg.chat_id;
-    let messageText = msg.fext;
-    let messageDate = msg.date;
-    let messageUsr = msg.from.username;
-
-    bot.sendMessage(msg.chat_id, messageChatId, messageText, messageDate, messageUsr);
-
-    console.log(msg);
+bot.on('message',msg => {
+    bot.sendMessage(msg.chat.id, `Hello: "Hi, ${msg.from.text}"`)
 });
