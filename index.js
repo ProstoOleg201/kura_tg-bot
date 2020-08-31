@@ -11,17 +11,11 @@ const bot = new TelegramBot(TOKEN, {polling: true})
 bot.on('text', function (msg)
 {
     let messageChatId = msg.chat_id;
-    let messageText = msg.text;
+    let messageText = msg.fext;
     let messageDate = msg.date;
     let messageUsr = msg.from.username;
 
-    sendMessageByBot(messageChatId, messageText, messageDate, messageUsr);
+    bot.sendMessage(msg.chat_id, messageChatId, messageText, messageDate, messageUsr);
 
     console.log(msg);
 });
-
-function sendMessageByBot (aId, aText, aDate, aName)
-{
-    let text = 'I\'m a cute bot!';
-    bot.sendMessage(aId, aText, aDate, aName);
-}
