@@ -22,14 +22,10 @@ bot.onText(/\/start_test/, function (msg, match) {
     bot.sendMessage(msg.chat.id, textBot, options);
 });
 
-bot.on('callback_query', (query) => {
+bot.on('callback_query', (query, msg) => {
    const chatId = query.message.chat.id;
-   const msgId = query.message_id;
 
-   if(query.data === 'data 1') {
-       bot.deleteMessage(chatId,msgId);//удаляем сообщение
-       //bot.sendMessage(chatId, 'Вибор поиска по слову');
-   }
+   if(query.data === 'data 1') bot.sendMessage(chatId, 'Вибор поиска по слову');
    if(query.data === 'data 2') bot.sendMessage(chatId, 'Вибор поиска по категориям');
    if(query.data === 'data 3') bot.sendMessage(chatId, 'Вибор поиска по району');
 });
