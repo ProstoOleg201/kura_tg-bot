@@ -7,21 +7,16 @@ let token = '1185029109:AAEMIODQ0Cee82UeF81WJ5Ze6vUPgI8cuos';
 // Подробнее: https://core.telegram.org/bots/api#getupdates
 let bot = new TelegramBot(token, { polling: true });
 
-bot.on('text', function(msg)
-{
-    var messageChatId = msg.chat.id;
-    var messageText = msg.text;
-    var messageDate = msg.date;
-    var messageUsr = msg.from.username;
+var options = {
+    reply_markup: JSON.stringify({
+        inline_keyboard: [
+            [{ text: 'Кнопка 1', callback_data: 'data 1' }],
+            [{ text: 'Кнопка 2', callback_data: 'data 2' }],
+            [{ text: 'Кнопка 3', callback_data: 'data 3' }]
+        ]
+    })
+};
 
-    if (messageText === '/say') {
-        sendMessageByBot(messageChatId, 'Hello World!');
-    }
-
-    console.log(msg);
+bot.onText(/\/start_test/, function (msg, match) {
+    bot.sendMessage(msg.chat.id, 'Выберите любую кнопку:', options);
 });
-
-function sendMessageByBot(aChatId, aMessage)
-{
-    bot.sendMessage(aChatId, aMessage, { caption: 'I\'m a cute bot!' });
-}
