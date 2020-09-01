@@ -26,6 +26,11 @@ bot.on('callback_query', (query) => {
 
     const {chat, message_id, text} = query.message
 
+    console.log(chat);
+    console.log(message_id);
+    console.log(text);
+    console.log(query.first_name);
+
     switch (query.data) {
         case 'data 1':
             bot.deleteMessage(chat.id, message_id)
