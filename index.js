@@ -22,27 +22,55 @@ bot.onText(/\/start_test/, function (msg, match) {
     bot.sendMessage(msg.chat.id, textBot, options);
 });
 
+bot.on('message', function (msg, match){
+    whoSendMessage(msg);
+});
+
+function whoSendMessage(msg) {
+    const {text} = msg
+    const {first_name, username} = msg.from
+
+    console.log(first_name + ' (@' + username + ')' + getTimeNow() + text);
+}
+function getTimeNow() {
+
+    const date = new Date();
+    let hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    let min = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+    let sec = date.getSeconds();
+    sec = (min < 10 ? "0" : "") + sec;
+
+    return ' ' + hour + ':' + min + ':' + sec + ' ';
+}
+
 bot.on('callback_query', (query) => {
 
     const {chat, message_id, text} = query.message
-
-    console.log(chat);
-    console.log(message_id);
-    console.log(text);
-    console.log(query.first_name);
+    bot.deleteMessage(chat.id, message_id)
 
     switch (query.data) {
         case 'data 1':
-            bot.deleteMessage(chat.id, message_id)
             bot.sendMessage(chat.id,'Вибор поиска по слову')
             break;
         case 'data 2':
-            bot.deleteMessage(chat.id, message_id)
             bot.sendMessage(chat.id, 'Вибор поиска по категориям')
             break;
         case 'data 3':
-            bot.deleteMessage(chat.id, message_id)
             bot.sendMessage(chat.id, 'Вибор поиска по району')
             break;
     }
 });
+
+
+/*
+База данних та поиск в ней
+Из чего состоит база даних ???
+
+1. Title: Название заведения. Например Grand Lobster / Гранд Лобстер
+2. Tags: Похожие слова, поиск по словам. Например Лобсетр, Гранд, Лоб, Grand, Lobster и т.д.
+3. Номер телофона. Например: +380940234214
+4. Часи работи. Пн-Пт 12:00-19:00
+5.
+ */
